@@ -52,6 +52,7 @@ document.getElementById("add-money-btn").addEventListener("click", (e) => {
 
 // cashOut money functionality starts here
 document.getElementById("cashOut-money-btn").addEventListener("click", (e) => {
+  e.preventDefault();
   const cashOutNumber = getInputValue("cashOut-number");
   const cashOutAmount = getInputValueNumber("cashOut-amount");
   const cashOutPin = getInputValueNumber("cashOut-pin");
