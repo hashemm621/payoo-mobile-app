@@ -16,5 +16,4 @@ loginBtn.addEventListener("click", (e) => {
   } else {
     alert("Invalid credential");
   }
-  
 });

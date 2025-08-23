@@ -1,17 +1,37 @@
-// add money functionality starts here
 const validPin = 1234;
+// reuseable function
+
+// function to get input value
+function getInputValueNumber(id) {
+  const inputValue = parseInt(document.getElementById(id).value.trim());
+  return inputValue;
+}
+function getInputValue(id) {
+  const inputfield = document.getElementById(id).value.trim();
+  return inputfield;
+}
+
+// function to get inner text
+function getInnerText(id) {
+  const textItem = parseInt(document.getElementById(id).innerText);
+  return textItem;
+}
+
+// function to set inner text
+function setInnerText(value) {
+  const setText = (document.getElementById("available-balance").innerText =
+    value);
+  return setText;
+}
+
+// add money functionality starts here
 document.getElementById("add-money-btn").addEventListener("click", (e) => {
   e.preventDefault();
-  const bank = document.getElementById("bank").value.trim();
-  const accountNumber = document.getElementById("account-number").value.trim();
-  const addAmount = parseInt(
-    document.getElementById("add-amount").value.trim()
-  );
-  const addPin = parseInt(document.getElementById("add-pin").value.trim());
-
-  const availableBalance = parseInt(
-    document.getElementById("available-balance").innerText
-  );
+  const bank = getInputValue("bank");
+  const accountNumber = getInputValue("account-number");
+  const addAmount = getInputValueNumber("add-amount");
+  const addPin = getInputValueNumber("add-pin");
+  const availableBalance = getInnerText("available-balance");
 
   if (accountNumber.length != 11) {
     alert("Please provide valid account number");
@@ -25,24 +45,18 @@ document.getElementById("add-money-btn").addEventListener("click", (e) => {
 
   const totalNewAvailableBalance = addAmount + availableBalance;
 
-  document.getElementById("available-balance").innerText =
-    totalNewAvailableBalance;
+  setInnerText(totalNewAvailableBalance);
 });
+
 // add money functionality ends here
 
 // cashOut money functionality starts here
 document.getElementById("cashOut-money-btn").addEventListener("click", (e) => {
-  const cashOutNumber = document.getElementById("cashOut-number").value.trim();
-  const cashOutAmount = parseInt(
-    document.getElementById("cashOut-amount").value.trim()
-  );
-  const cashOutPin = parseInt(
-    document.getElementById("cashOut-pin").value.trim()
-  );
+  const cashOutNumber = getInputValue("cashOut-number");
+  const cashOutAmount = getInputValueNumber("cashOut-amount");
+  const cashOutPin = getInputValueNumber("cashOut-pin");
 
-  const availableBalance = parseInt(
-    document.getElementById("available-balance").innerText
-  );
+  const availableBalance = getInnerText("available-balance");
   if (cashOutNumber.length !== 11) {
     alert("Please provide valid agent number");
     return;
@@ -52,7 +66,7 @@ document.getElementById("cashOut-money-btn").addEventListener("click", (e) => {
     return;
   }
   const newAvailableBalance = availableBalance - cashOutAmount;
-  document.getElementById("available-balance").innerText = newAvailableBalance;
+  setInnerText(newAvailableBalance);
 });
 // cashOut money functionality ends here
 
