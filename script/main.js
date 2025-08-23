@@ -1,6 +1,7 @@
 // login button functionality
 const loginBtn = document.getElementById("login-btn");
-loginBtn.addEventListener("click", () => {
+loginBtn.addEventListener("click", (e) => {
+  e.preventDefault();
   const mobileNumber = 123456789;
   const pinNumber = 1234;
 
@@ -15,5 +16,5 @@ loginBtn.addEventListener("click", () => {
   } else {
     alert("Invalid credential");
   }
-  console.log('relode');
+  
 });
